@@ -16,9 +16,8 @@ def download(mods):
     for id in mods:
         steamcmd.extend(["+workshop_download_item", "107410", id])
         steamcmd.extend(["validate"])
-    steamcmd.extend(["+quit"])
     try:
-        subprocess.run(steamcmd, check=True)
+        subprocess.run(steamcmd.extend(["+quit"]), check=True)
     except subprocess.CalledProcessError:
         subprocess.run(steamcmd, timeout=900, check=True)
 
