@@ -15,6 +15,7 @@ def download(mods):
     steamcmd.extend(["+login", os.environ["STEAM_USER"], os.environ["STEAM_PASSWORD"]])
     for id in mods:
         steamcmd.extend(["+workshop_download_item", "107410", id])
+        steamcmd.extend(["validate"])
     steamcmd.extend(["+quit"])
     try:
         subprocess.run(steamcmd, check=True)
